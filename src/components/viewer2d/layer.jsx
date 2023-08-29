@@ -8,7 +8,7 @@ import {
   Group
 } from './export';
 
-export default function Layer({ layer, scene, catalog }) {
+export default function Layer({ layer, scene, catalog , theme }) {
 
   let { unit, groups } = scene;
   let { lines, areas, vertices, holes, id: layerID, items, opacity } = layer;
@@ -17,12 +17,14 @@ export default function Layer({ layer, scene, catalog }) {
     <g opacity={opacity}>
       {
         areas.valueSeq().map(area =>
-          <Area key={area.id} layer={layer} area={area} unit={unit} catalog={catalog} />)
+          <Area key={area.id} layer={layer} area={area} unit={unit} catalog={catalog} theme={theme}  />)
       }
       {
         lines.valueSeq().map(line =>
           <Line key={line.id} layer={layer} line={line} scene={scene} catalog={catalog} />)
       }
+
+      {/* //burdayimmm */}
       {
         items.valueSeq().map(item =>
           <Item key={item.id} layer={layer} item={item} scene={scene} catalog={catalog} />)

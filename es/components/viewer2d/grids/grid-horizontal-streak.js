@@ -5,7 +5,8 @@ import { List } from 'immutable';
 export default function GridHorizontalStreak(_ref) {
   var width = _ref.width,
       height = _ref.height,
-      grid = _ref.grid;
+      grid = _ref.grid,
+      theme = _ref.theme;
 
   var step = grid.properties.get('step');
   var colors = void 0;
@@ -21,7 +22,7 @@ export default function GridHorizontalStreak(_ref) {
   for (var y = 0; y <= height; y += step) {
     var color = colors.get(i % colors.size);
     i++;
-    rendered.push(React.createElement('line', { key: y, x1: '0', y1: y, x2: width, y2: y, strokeWidth: '1', stroke: color }));
+    rendered.push(React.createElement('line', { key: y, x1: '0', y1: y, x2: width, y2: y, strokeWidth: '1', stroke: theme == 'dark' ? '#737373' : color }));
   }
 
   return React.createElement(

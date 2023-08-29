@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {List} from 'immutable';
 
-export default function GridHorizontalStreak({width, height, grid}) {
+export default function GridHorizontalStreak({width, height, grid , theme}) {
   let step = grid.properties.get('step');
   let colors;
 
@@ -17,7 +17,7 @@ export default function GridHorizontalStreak({width, height, grid}) {
   for (let y = 0; y <= height; y += step) {
     let color = colors.get(i % colors.size);
     i++;
-    rendered.push(<line key={y} x1="0" y1={y} x2={width} y2={y} strokeWidth="1" stroke={color}/>);
+    rendered.push(<line key={y} x1="0" y1={y} x2={width} y2={y} strokeWidth="1" stroke={localStorage.theme == 'dark' ? '#737373' : color}/>);
   }
 
   return (<g>{rendered}</g>);

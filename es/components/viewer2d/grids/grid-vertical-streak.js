@@ -5,7 +5,8 @@ import { List } from 'immutable';
 export default function GridVerticalStreak(_ref) {
   var width = _ref.width,
       height = _ref.height,
-      grid = _ref.grid;
+      grid = _ref.grid,
+      theme = _ref.theme;
 
   var step = grid.properties.get('step');
   var colors = void 0;
@@ -21,7 +22,7 @@ export default function GridVerticalStreak(_ref) {
   for (var x = 0; x <= width; x += step) {
     var color = colors.get(i % colors.size);
     i++;
-    rendered.push(React.createElement('line', { key: x, x1: x, y1: '0', x2: x, y2: height, strokeWidth: '1', stroke: color }));
+    rendered.push(React.createElement('line', { key: x, x1: x, y1: '0', x2: x, y2: height, strokeWidth: '1', stroke: theme == 'dark' ? '#737373' : color }));
   }
 
   return React.createElement(

@@ -5,7 +5,9 @@ import Translator from '../../translator/translator';
 
 let translator = new Translator();
 
-export default function AreaFactory(name, info, textures) {
+export default function AreaFactory(name, info, textures , theme) {
+
+  var localStorage = window.hasOwnProperty('localStorage') ? window.localStorage : false;
 
   let areaElement = {
     name,
@@ -51,7 +53,7 @@ export default function AreaFactory(name, info, textures) {
 
       });
 
-      let fill = element.selected ? SharedStyle.AREA_MESH_COLOR.selected : element.properties.get('patternColor');
+      let fill = element.selected ? localStorage.theme == 'dark' ? '#344054' :  '#F9FAFB':  localStorage.theme == 'dark' ? '#202020' :  '#FFF';
 
       return (<path d={path} fill={fill} />);
     },

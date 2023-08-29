@@ -15,6 +15,7 @@ export default function Content({
   state,
   customContents,
   onClickOnItem,
+  theme
 }) {
   let mode = state.get("mode");
 
@@ -50,6 +51,7 @@ export default function Content({
           height={height}
           onClickOnItem={onClickOnItem}
           viewOnly={viewOnly}
+          theme={theme}
         />
       );
 

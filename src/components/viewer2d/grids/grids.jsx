@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import GridHorizontalStreak from './grid-horizontal-streak';
 import GridVerticalStreak from './grid-vertical-streak';
 
-export default function Grids({scene}) {
+export default function Grids({scene , theme}) {
 
   let {width, height, grids} = scene;
 
   let renderedGrids = grids.entrySeq().map(([gridID, grid]) => {
     switch (grid.type) {
       case 'horizontal-streak':
-        return (<GridHorizontalStreak key={gridID} width={width} height={height} grid={grid}/>);
+        return (<GridHorizontalStreak key={gridID} width={width} height={height} grid={grid} theme={theme}/>);
 
       case 'vertical-streak':
-        return (<GridVerticalStreak key={gridID} width={width} height={height} grid={grid}/>);
+        return (<GridVerticalStreak key={gridID} width={width} height={height} grid={grid} theme={theme}/>);
 
       default:
         console.warn(`grid ${grid.type} not allowed`);

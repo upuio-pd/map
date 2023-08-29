@@ -14,7 +14,8 @@ export default function Content(_ref) {
       viewOnly = _ref.viewOnly,
       state = _ref.state,
       customContents = _ref.customContents,
-      onClickOnItem = _ref.onClickOnItem;
+      onClickOnItem = _ref.onClickOnItem,
+      theme = _ref.theme;
 
   var mode = state.get("mode");
 
@@ -46,7 +47,8 @@ export default function Content(_ref) {
         width: width,
         height: height,
         onClickOnItem: onClickOnItem,
-        viewOnly: viewOnly
+        viewOnly: viewOnly,
+        theme: theme
       });
 
     case constants.MODE_CONFIGURING_PROJECT:

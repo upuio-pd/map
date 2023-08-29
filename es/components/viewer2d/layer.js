@@ -5,7 +5,8 @@ import { Line, Area, Vertex, Item, Group } from './export';
 export default function Layer(_ref) {
   var layer = _ref.layer,
       scene = _ref.scene,
-      catalog = _ref.catalog;
+      catalog = _ref.catalog,
+      theme = _ref.theme;
   var unit = scene.unit,
       groups = scene.groups;
   var lines = layer.lines,
@@ -21,7 +22,7 @@ export default function Layer(_ref) {
     'g',
     { opacity: opacity },
     areas.valueSeq().map(function (area) {
-      return React.createElement(Area, { key: area.id, layer: layer, area: area, unit: unit, catalog: catalog });
+      return React.createElement(Area, { key: area.id, layer: layer, area: area, unit: unit, catalog: catalog, theme: theme });
     }),
     lines.valueSeq().map(function (line) {
       return React.createElement(Line, { key: line.id, layer: layer, line: line, scene: scene, catalog: catalog });

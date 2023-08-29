@@ -23,6 +23,9 @@ const toolbarW = 400;
 const sidebarW = 300;
 const footerBarH = 20;
 
+var localStorage = window.hasOwnProperty('localStorage') ? window.localStorage : false;
+
+
 const wrapperStyle = {
   display: "flex",
   flexFlow: "row nowrap",
@@ -63,8 +66,12 @@ class ReactPlanner extends Component {
       stateExtractor,
       viewOnly,
       onClickOnItem,
+      theme = 'light' , 
       ...props
     } = this.props;
+
+localStorage && localStorage.setItem('theme', `${props.theme == 'light' ? 'light' : 'dark'}`);
+    // const theme = 'light';
 
     //let contentW = !viewOnly ? width - toolbarW : width;
     let contentW = width;
@@ -75,13 +82,13 @@ class ReactPlanner extends Component {
     let extractedState = stateExtractor(state);
 
     return (
-      <div style={{ ...wrapperStyle, height }}>
-        {/* <Toolbar
+      <div style={{ ...wrapperStyle, height  }}>
+        <Toolbar
           width={toolbarW}
           height={toolbarH}
           state={extractedState}
           {...props}
-        /> */}
+        />
 
         <Content
           width={contentW}
@@ -89,16 +96,17 @@ class ReactPlanner extends Component {
           state={extractedState}
           viewOnly={viewOnly}
           onClickOnItem={onClickOnItem}
+          theme={theme}
           {...props}
           onWheel={(event) => event.preventDefault()}
         />
 
-        <Sidebar
+        {/* <Sidebar
           width={sidebarW}
           height={sidebarH}
           state={extractedState}
           {...props}
-        />
+        /> */}
 
         {/* <FooterBar
           width={width}

@@ -106,7 +106,7 @@ function extractElementData(node) {
 }
 
 export default function Viewer2D(
-    {state, width, height, viewOnly, onClickOnItem},
+    {state, width, height, viewOnly, onClickOnItem , theme},
     {
         viewer2DActions,
         linesActions,
@@ -341,15 +341,17 @@ export default function Viewer2D(
         return viewer2DActions.updateCameraView(value);
     };
 
-    useEffect(() => {
-        let newValue = fitToViewer({
-            SVGHeight: state.toJS().scene.height,
-            SVGWidth: state.toJS().scene.width,
-            viewerHeight: height,
-            viewerWidth: width,
-        });
-        onChangeValue({...newValue, e: 0, f: 0});
-    }, []);
+
+    //reset to width height
+    // useEffect(() => {
+    //     let newValue = fitToViewer({
+    //         SVGHeight: state.toJS().scene.height,
+    //         SVGWidth: state.toJS().scene.width,
+    //         viewerHeight: height,
+    //         viewerWidth: width,
+    //     });
+    //     onChangeValue({...newValue, e: 0, f: 0});
+    // }, []);
 
     let onChangeTool = (tool) => {
         switch (tool) {
@@ -372,10 +374,9 @@ export default function Viewer2D(
     };
 
     let {e, f, SVGWidth, SVGHeight} = state.get("viewer2D").toJS();
-
     let rulerSize = 0; //px
     let rulerUnitPixelSize = 100;
-    let rulerBgColor = SharedStyle.PRIMARY_COLOR.main;
+    let rulerBgColor =  SharedStyle.COLORS.black;
     let rulerFnColor = SharedStyle.COLORS.white;
     let rulerMkColor = SharedStyle.SECONDARY_COLOR.main;
     let sceneWidth = SVGWidth || state.getIn(["scene", "width"]);
@@ -570,57 +571,7 @@ export default function Viewer2D(
                 position: "relative",
             }}
         >
-            <div
-                style={{gridColumn: 1, gridRow: 1, backgroundColor: rulerBgColor}}
-            ></div>
-            <div
-                style={{
-                    gridRow: 1,
-                    gridColumn: 2,
-                    position: "relative",
-                    overflow: "hidden",
-                }}
-                id="rulerX"
-            >
-                {sceneWidth ? (
-                    <RulerX
-                        unitPixelSize={rulerUnitPixelSize}
-                        zoom={sceneZoom}
-                        mouseX={state.mouse.get("x")}
-                        width={width - rulerSize}
-                        zeroLeftPosition={e || 0}
-                        backgroundColor={rulerBgColor}
-                        fontColor={rulerFnColor}
-                        markerColor={rulerMkColor}
-                        positiveUnitsNumber={rulerXElements}
-                        negativeUnitsNumber={0}
-                    />
-                ) : null}
-            </div>
-            <div
-                style={{
-                    gridColumn: 1,
-                    gridRow: 2,
-                    position: "relative",
-                    overflow: "hidden",
-                }}
-                id="rulerY"
-            >
-                {sceneHeight ? (
-                    <RulerY
-                        unitPixelSize={rulerUnitPixelSize}
-                        zoom={sceneZoom}
-                        mouseY={state.mouse.get("y")}
-                        height={height - rulerSize}
-                        zeroTopPosition={sceneHeight * sceneZoom + f || 0}
-                        backgroundColor={rulerBgColor}
-                        fontColor={rulerFnColor}
-                        markerColor={rulerMkColor}
-                        positiveUnitsNumber={rulerYElements}
-                        negativeUnitsNumber={0}
-                    />
-                ) : null}
-            </div>
+           
             <ReactSVGPanZoom
                 width={width}
                 height={height}
@@ -632,7 +583,7 @@ export default function Viewer2D(
                 onChangeTool={onChangeTool}
                 detectAutoPan={mode2DetectAutopan(mode)}
                 onMouseDown={onMouseDown}
-                background={"#fff"}
+                background={ localStorage.theme == 'dark' ? '#141414' : "#fff"}
                 miniatureBackground={"#fff"}
                 onMouseMove={onMouseMove}
                 // customToolbar={customToolBar}
@@ -647,17 +598,17 @@ export default function Viewer2D(
                             patternUnits="userSpaceOnUse"
                             width="4"
                             height="4"
-                            fill="#FFF"
+                            fill=  {localStorage.theme == 'dark' ? "#737373" : "#FFF"}
                         >
-                            <rect x="0" y="0" width="4" height="4" fill="#FFF"/>
+                            <rect x="0" y="0" width="4" height="4" fill= {localStorage.theme == 'dark' ? "#737373" : "#FFF"}/>
                             <path
                                 d="M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2"
-                                style={{stroke: "#7F56D9", strokeWidth: 2}}
+                                style={{stroke:  localStorage.theme == 'dark' ? "#737373" : "#7F56D9", strokeWidth: 2}}
                             />
                         </pattern>
                     </defs>
                     <g style={Object.assign(mode2Cursor(mode), mode2PointerEvents(mode))}>
-                        <State state={state} catalog={catalog}/>
+                        <State state={state} catalog={catalog} theme={theme}/>
                     </g>
                 </svg>
             </ReactSVGPanZoom>

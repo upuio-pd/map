@@ -100,9 +100,9 @@ var ReactPlanner = function (_Component) {
           onClickOnItem = _props2.onClickOnItem,
           props = _objectWithoutProperties(_props2, ["width", "height", "state", "stateExtractor", "viewOnly", "onClickOnItem"]);
 
+      var theme = 'dark';
+
       //let contentW = !viewOnly ? width - toolbarW : width;
-
-
       var contentW = width;
       var toolbarH = height;
       var contentH = height;
@@ -112,23 +112,24 @@ var ReactPlanner = function (_Component) {
 
       return React.createElement(
         "div",
-        { style: _extends({}, wrapperStyle, { height: height }) },
+        { style: _extends({}, wrapperStyle, { height: height, zIndex: 'auto' }) },
+        React.createElement(Toolbar, _extends({
+          width: toolbarW,
+          height: toolbarH,
+          state: extractedState
+        }, props)),
         React.createElement(Content, _extends({
           width: contentW,
           height: contentH,
           state: extractedState,
           viewOnly: viewOnly,
-          onClickOnItem: onClickOnItem
+          onClickOnItem: onClickOnItem,
+          theme: theme
         }, props, {
           onWheel: function onWheel(event) {
             return event.preventDefault();
           }
-        })),
-        React.createElement(Sidebar, _extends({
-          width: sidebarW,
-          height: sidebarH,
-          state: extractedState
-        }, props))
+        }))
       );
     }
   }]);
