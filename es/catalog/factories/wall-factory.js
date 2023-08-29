@@ -9,7 +9,8 @@ import Translator from '../../translator/translator';
 var epsilon = 20;
 var STYLE_TEXT = { textAnchor: 'middle' };
 var STYLE_LINE = { stroke: SharedStyle.LINE_MESH_COLOR.selected };
-var STYLE_RECT = { strokeWidth: 1, stroke: SharedStyle.LINE_MESH_COLOR.unselected, fill: 'url(#diagonalFill)' };
+//wall color 
+var STYLE_RECT = { strokeWidth: 1, stroke: '#202020', fill: 'url(#diagonalFill)' };
 var STYLE_RECT_SELECTED = _extends({}, STYLE_RECT, { stroke: SharedStyle.LINE_MESH_COLOR.selected });
 
 var translator = new Translator();
