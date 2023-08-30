@@ -539,6 +539,57 @@ export default function Viewer2D(_ref, _ref2) {
                 position: "relative"
             }
         },
+        React.createElement("div", {
+            style: { gridColumn: 1, gridRow: 1, backgroundColor: rulerBgColor }
+        }),
+        React.createElement(
+            "div",
+            {
+                style: {
+                    gridRow: 1,
+                    gridColumn: 2,
+                    position: "relative",
+                    overflow: "hidden"
+                },
+                id: "rulerX"
+            },
+            sceneWidth ? React.createElement(RulerX, {
+                unitPixelSize: rulerUnitPixelSize,
+                zoom: sceneZoom,
+                mouseX: state.mouse.get("x"),
+                width: width - rulerSize,
+                zeroLeftPosition: e || 0,
+                backgroundColor: rulerBgColor,
+                fontColor: rulerFnColor,
+                markerColor: rulerMkColor,
+                positiveUnitsNumber: rulerXElements,
+                negativeUnitsNumber: 0
+            }) : null
+        ),
+        React.createElement(
+            "div",
+            {
+                style: {
+                    gridColumn: 1,
+                    gridRow: 2,
+                    position: "relative",
+                    overflow: "hidden"
+                },
+                id: "rulerY"
+            },
+            sceneHeight ? React.createElement(RulerY, {
+                unitPixelSize: rulerUnitPixelSize,
+                zoom: sceneZoom,
+                mouseY: state.mouse.get("y"),
+                height: height - rulerSize,
+                zeroTopPosition: sceneHeight * sceneZoom + f || 0,
+                backgroundColor: rulerBgColor,
+                fontColor: rulerFnColor,
+                markerColor: rulerMkColor,
+                positiveUnitsNumber: rulerYElements,
+                negativeUnitsNumber: 0
+            }) : null
+        ),
         React.createElement(
             ReactSVGPanZoom,
             {
