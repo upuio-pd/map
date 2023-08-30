@@ -83,12 +83,12 @@ localStorage && localStorage.setItem('theme', `${props.theme == 'light' ? 'light
 
     return (
       <div style={{ ...wrapperStyle, height  }}>
-        <Toolbar
+        {/* <Toolbar
           width={toolbarW}
           height={toolbarH}
           state={extractedState}
           {...props}
-        />
+        /> */}
 
         <Content
           width={contentW}
