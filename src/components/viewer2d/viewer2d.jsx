@@ -400,7 +400,8 @@ export default function Viewer2D(
                 position: "relative",
             }}
         >
-           <div
+
+<div
                 style={{gridColumn: 1, gridRow: 1, backgroundColor: rulerBgColor}}
             ></div>
             <div
