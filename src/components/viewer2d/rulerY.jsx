@@ -104,11 +104,11 @@ class RulerY extends Component {
 
     return (
       <div style={rulerStyle}>
-        <div id="verticalMarker" style={markerStyle}></div>
+        {/* <div id="verticalMarker" style={markerStyle}></div>
         <div id="negativeRuler" style={negativeRulerContainer}></div>
         <div id="positiveRuler" style={positiveRulerContainer}>
           {positiveDomElements}
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -133,17 +133,7 @@ var RulerY = function (_Component) {
         }
       }
 
-      return React.createElement(
-        "div",
-        { style: rulerStyle },
-        React.createElement("div", { id: "verticalMarker", style: markerStyle }),
-        React.createElement("div", { id: "negativeRuler", style: negativeRulerContainer }),
-        React.createElement(
-          "div",
-          { id: "positiveRuler", style: positiveRulerContainer },
-          positiveDomElements
-        )
-      );
+      return React.createElement("div", { style: rulerStyle });
     }
   }]);
 
