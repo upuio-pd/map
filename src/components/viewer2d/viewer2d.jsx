@@ -12,7 +12,7 @@ import {
 import * as constants from "../../constants";
 import State from "./state";
 import * as SharedStyle from "../../shared-style";
-import {RulerX, RulerY} from "./export";
+
 import {GiArrowCursor} from "react-icons/gi";
 import {FaRegHandPointer} from "react-icons/fa";
 import {FiZoomIn, FiZoomOut} from "react-icons/fi";
@@ -401,57 +401,7 @@ export default function Viewer2D(
             }}
         >
 
-<div
-                style={{gridColumn: 1, gridRow: 1, backgroundColor: rulerBgColor}}
-            ></div>
-            <div
-                style={{
-                    gridRow: 1,
-                    gridColumn: 2,
-                    position: "relative",
-                    overflow: "hidden",
-                }}
-                id="rulerX"
-            >
-                {sceneWidth ? (
-                    <RulerX
-                        unitPixelSize={rulerUnitPixelSize}
-                        zoom={sceneZoom}
-                        mouseX={state.mouse.get("x")}
-                        width={width - rulerSize}
-                        zeroLeftPosition={e || 0}
-                        backgroundColor={rulerBgColor}
-                        fontColor={rulerFnColor}
-                        markerColor={rulerMkColor}
-                        positiveUnitsNumber={rulerXElements}
-                        negativeUnitsNumber={0}
-                    />
-                ) : null}
-            </div>
-            <div
-                style={{
-                    gridColumn: 1,
-                    gridRow: 2,
-                    position: "relative",
-                    overflow: "hidden",
-                }}
-                id="rulerY"
-            >
-                {sceneHeight ? (
-                    <RulerY
-                        unitPixelSize={rulerUnitPixelSize}
-                        zoom={sceneZoom}
-                        mouseY={state.mouse.get("y")}
-                        height={height - rulerSize}
-                        zeroTopPosition={sceneHeight * sceneZoom + f || 0}
-                        backgroundColor={rulerBgColor}
-                        fontColor={rulerFnColor}
-                        markerColor={rulerMkColor}
-                        positiveUnitsNumber={rulerYElements}
-                        negativeUnitsNumber={0}
-                    />
-                ) : null}
-            </div>
+
             <ReactSVGPanZoom
                 width={width}
                 height={height}

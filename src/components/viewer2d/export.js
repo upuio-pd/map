@@ -10,8 +10,7 @@ import Item from "./item";
 import Area from "./area";
 import Grids from "./grids/grids";
 import Group from "./group";
-import RulerX from "./rulerX";
-import RulerY from "./rulerY";
+
 import { fitToViewer } from "./fitToViewer";
 
 export {
@@ -27,8 +26,6 @@ export {
   Area,
   Grids,
   Group,
-  RulerX,
-  RulerY,
   fitToViewer,
 };
 
@@ -45,7 +42,6 @@ export default {
   Area,
   Grids,
   Group,
-  RulerX,
-  RulerY,
+
   fitToViewer,
 };

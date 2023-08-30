@@ -10,11 +10,10 @@ import Item from "./item";
 import Area from "./area";
 import Grids from "./grids/grids";
 import Group from "./group";
-import RulerX from "./rulerX";
-import RulerY from "./rulerY";
+
 import { fitToViewer } from "./fitToViewer";
 
-export { Viewer2D, Vertex, State, Snap, Scene, Ruler, Line, Layer, Item, Area, Grids, Group, RulerX, RulerY, fitToViewer };
+export { Viewer2D, Vertex, State, Snap, Scene, Ruler, Line, Layer, Item, Area, Grids, Group, fitToViewer };
 
 export default {
   Viewer2D: Viewer2D,
@@ -29,7 +28,6 @@ export default {
   Area: Area,
   Grids: Grids,
   Group: Group,
-  RulerX: RulerX,
-  RulerY: RulerY,
+
   fitToViewer: fitToViewer
 };
