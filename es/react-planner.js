@@ -1,46 +1,6 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require("react");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require("prop-types");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _redux = require("redux");
-
-var _reactRedux = require("react-redux");
-
-var _translator = require("./translator/translator");
-
-var _translator2 = _interopRequireDefault(_translator);
-
-var _catalog = require("./catalog/catalog");
-
-var _catalog2 = _interopRequireDefault(_catalog);
-
-var _export = require("./actions/export");
-
-var _export2 = _interopRequireDefault(_export);
-
-var _objectsUtils = require("./utils/objects-utils");
-
-var _export3 = require("./components/export");
-
-var _version = require("./version");
-
-require("./styles/export");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
@@ -50,9 +10,21 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Toolbar = _export3.ToolbarComponents.Toolbar;
-var Sidebar = _export3.SidebarComponents.Sidebar;
-var FooterBar = _export3.FooterBarComponents.FooterBar;
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import Translator from "./translator/translator";
+import Catalog from "./catalog/catalog";
+import actions from "./actions/export";
+import { objectsMap } from "./utils/objects-utils";
+import { ToolbarComponents, Content, SidebarComponents, FooterBarComponents } from "./components/export";
+import { VERSION } from "./version";
+import "./styles/export";
+
+var Toolbar = ToolbarComponents.Toolbar;
+var Sidebar = SidebarComponents.Sidebar;
+var FooterBar = FooterBarComponents.FooterBar;
 
 
 var toolbarW = 400;
@@ -80,7 +52,7 @@ var ReactPlanner = function (_Component) {
     value: function getChildContext() {
       var _this2 = this;
 
-      return _extends({}, (0, _objectsUtils.objectsMap)(_export2.default, function (actionNamespace) {
+      return _extends({}, objectsMap(actions, function (actionNamespace) {
         return _this2.props[actionNamespace];
       }), {
         translator: this.props.translator,
@@ -143,10 +115,10 @@ var ReactPlanner = function (_Component) {
 
       var extractedState = stateExtractor(state);
 
-      return _react2.default.createElement(
+      return React.createElement(
         "div",
         { style: _extends({}, wrapperStyle, { height: height }) },
-        _react2.default.createElement(_export3.Content, _extends({
+        React.createElement(Content, _extends({
           width: contentW,
           height: contentH,
           state: extractedState,
@@ -163,42 +135,42 @@ var ReactPlanner = function (_Component) {
   }]);
 
   return ReactPlanner;
-}(_react.Component);
+}(Component);
 
 ReactPlanner.propTypes = {
-  translator: _propTypes2.default.instanceOf(_translator2.default),
-  catalog: _propTypes2.default.instanceOf(_catalog2.default),
-  allowProjectFileSupport: _propTypes2.default.bool,
-  plugins: _propTypes2.default.arrayOf(_propTypes2.default.func),
-  autosaveKey: _propTypes2.default.string,
-  autosaveDelay: _propTypes2.default.number,
-  width: _propTypes2.default.number.isRequired,
-  height: _propTypes2.default.number.isRequired,
-  stateExtractor: _propTypes2.default.func.isRequired,
-  toolbarButtons: _propTypes2.default.array,
-  sidebarComponents: _propTypes2.default.array,
-  footerbarComponents: _propTypes2.default.array,
-  customContents: _propTypes2.default.object,
-  softwareSignature: _propTypes2.default.string
+  translator: PropTypes.instanceOf(Translator),
+  catalog: PropTypes.instanceOf(Catalog),
+  allowProjectFileSupport: PropTypes.bool,
+  plugins: PropTypes.arrayOf(PropTypes.func),
+  autosaveKey: PropTypes.string,
+  autosaveDelay: PropTypes.number,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  stateExtractor: PropTypes.func.isRequired,
+  toolbarButtons: PropTypes.array,
+  sidebarComponents: PropTypes.array,
+  footerbarComponents: PropTypes.array,
+  customContents: PropTypes.object,
+  softwareSignature: PropTypes.string
 };
 
 ReactPlanner.contextTypes = {
-  store: _propTypes2.default.object.isRequired
+  store: PropTypes.object.isRequired
 };
 
-ReactPlanner.childContextTypes = _extends({}, (0, _objectsUtils.objectsMap)(_export2.default, function () {
-  return _propTypes2.default.object;
+ReactPlanner.childContextTypes = _extends({}, objectsMap(actions, function () {
+  return PropTypes.object;
 }), {
-  translator: _propTypes2.default.object,
-  catalog: _propTypes2.default.object
+  translator: PropTypes.object,
+  catalog: PropTypes.object
 });
 
 ReactPlanner.defaultProps = {
-  translator: new _translator2.default(),
-  catalog: new _catalog2.default(),
+  translator: new Translator(),
+  catalog: new Catalog(),
   plugins: [],
   allowProjectFileSupport: true,
-  softwareSignature: "React-Planner " + _version.VERSION,
+  softwareSignature: "React-Planner " + VERSION,
   toolbarButtons: [],
   sidebarComponents: [],
   footerbarComponents: [],
@@ -213,9 +185,9 @@ function mapStateToProps(reduxState) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return (0, _objectsUtils.objectsMap)(_export2.default, function (actionNamespace) {
-    return (0, _redux.bindActionCreators)(_export2.default[actionNamespace], dispatch);
+  return objectsMap(actions, function (actionNamespace) {
+    return bindActionCreators(actions[actionNamespace], dispatch);
   });
 }
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ReactPlanner);
+export default connect(mapStateToProps, mapDispatchToProps)(ReactPlanner);
