@@ -463,7 +463,7 @@ export default function Viewer2D(_ref, _ref2) {
                 React.createElement(
                     "g",
                     { style: Object.assign(mode2Cursor(mode), mode2PointerEvents(mode)) },
-                    React.createElement(State, { state: state, catalog: catalog, theme: theme })
+                    React.createElement(State, { state: state, catalog: catalog })
                 )
             )
         )

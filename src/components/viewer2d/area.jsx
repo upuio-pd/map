@@ -19,7 +19,7 @@ const STYLE_TEXT = {
 };
 
 
-export default function Area({layer, area, catalog , theme}) {
+export default function Area({layer, area, catalog }) {
 
   let rendered = catalog.getElement(area.type).render2D(area, layer);
 

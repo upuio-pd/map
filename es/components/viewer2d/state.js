@@ -13,8 +13,7 @@ var guideStyle = {
 
 export default function State(_ref) {
   var state = _ref.state,
-      catalog = _ref.catalog,
-      theme = _ref.theme;
+      catalog = _ref.catalog;
   var activeSnapElement = state.activeSnapElement,
       snapElements = state.snapElements,
       scene = state.scene;
@@ -35,7 +34,7 @@ export default function State(_ref) {
     React.createElement(
       'g',
       { transform: 'translate(0, ' + scene.height + ') scale(1, -1)', id: 'svg-drawing-paper' },
-      React.createElement(Scene, { scene: scene, catalog: catalog, theme: theme }),
+      React.createElement(Scene, { scene: scene, catalog: catalog }),
       scene.getIn(['guides', 'horizontal']).entrySeq().map(function (_ref2) {
         var _ref3 = _slicedToArray(_ref2, 2),
             hgKey = _ref3[0],

@@ -9,14 +9,14 @@ export default class Scene extends Component {
   }
 
   render() {
-    let {scene, catalog , theme} = this.props;
+    let {scene, catalog } = this.props;
     let {height, layers} = scene;
 
     let selectedLayer = layers.get(scene.selectedLayer);
 
     return (
       <g>
-        <Grids scene={scene} theme={theme}/>
+        <Grids scene={scene} />
 
         <g style={{pointerEvents: 'none'}}>
           {
@@ -27,7 +27,7 @@ export default class Scene extends Component {
           }
         </g>
 
-        <Layer key={selectedLayer.id} layer={selectedLayer} scene={scene} catalog={catalog} theme={theme}/>
+        <Layer key={selectedLayer.id} layer={selectedLayer} scene={scene} catalog={catalog} />
       </g>
     );
   }

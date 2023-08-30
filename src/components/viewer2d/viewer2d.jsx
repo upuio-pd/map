@@ -488,7 +488,7 @@ export default function Viewer2D(
                         </pattern>
                     </defs>
                     <g style={Object.assign(mode2Cursor(mode), mode2PointerEvents(mode))}>
-                        <State state={state} catalog={catalog} theme={theme}/>
+                        <State state={state} catalog={catalog} />
                     </g>
                 </svg>
             </ReactSVGPanZoom>

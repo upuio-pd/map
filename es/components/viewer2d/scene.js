@@ -31,8 +31,7 @@ var Scene = function (_Component) {
     value: function render() {
       var _props = this.props,
           scene = _props.scene,
-          catalog = _props.catalog,
-          theme = _props.theme;
+          catalog = _props.catalog;
       var height = scene.height,
           layers = scene.layers;
 
@@ -42,7 +41,7 @@ var Scene = function (_Component) {
       return React.createElement(
         'g',
         null,
-        React.createElement(Grids, { scene: scene, theme: theme }),
+        React.createElement(Grids, { scene: scene }),
         React.createElement(
           'g',
           { style: { pointerEvents: 'none' } },
@@ -60,7 +59,7 @@ var Scene = function (_Component) {
             return React.createElement(Layer, { key: layerID, layer: layer, scene: scene, catalog: catalog });
           })
         ),
-        React.createElement(Layer, { key: selectedLayer.id, layer: selectedLayer, scene: scene, catalog: catalog, theme: theme })
+        React.createElement(Layer, { key: selectedLayer.id, layer: selectedLayer, scene: scene, catalog: catalog })
       );
     }
   }]);

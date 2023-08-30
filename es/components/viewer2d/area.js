@@ -21,8 +21,7 @@ var STYLE_TEXT = {
 export default function Area(_ref) {
   var layer = _ref.layer,
       area = _ref.area,
-      catalog = _ref.catalog,
-      theme = _ref.theme;
+      catalog = _ref.catalog;
 
 
   var rendered = catalog.getElement(area.type).render2D(area, layer);

@@ -6,8 +6,7 @@ import GridHorizontalStreak from './grid-horizontal-streak';
 import GridVerticalStreak from './grid-vertical-streak';
 
 export default function Grids(_ref) {
-  var scene = _ref.scene,
-      theme = _ref.theme;
+  var scene = _ref.scene;
   var width = scene.width,
       height = scene.height,
       grids = scene.grids;
@@ -20,10 +19,10 @@ export default function Grids(_ref) {
 
     switch (grid.type) {
       case 'horizontal-streak':
-        return React.createElement(GridHorizontalStreak, { key: gridID, width: width, height: height, grid: grid, theme: theme });
+        return React.createElement(GridHorizontalStreak, { key: gridID, width: width, height: height, grid: grid });
 
       case 'vertical-streak':
-        return React.createElement(GridVerticalStreak, { key: gridID, width: width, height: height, grid: grid, theme: theme });
+        return React.createElement(GridVerticalStreak, { key: gridID, width: width, height: height, grid: grid });
 
       default:
         console.warn('grid ' + grid.type + ' not allowed');
