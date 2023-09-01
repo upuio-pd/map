@@ -215,7 +215,7 @@ class Project {
 
   static updateZoomScale(state, scale) {
     state = state.set("zoom", scale);
-
+    // console.log("updateZoomScale");
     return { updatedState: state };
   }
 

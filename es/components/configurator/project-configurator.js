@@ -30,7 +30,7 @@ var ProjectConfigurator = function (_Component) {
   _createClass(ProjectConfigurator, [{
     key: 'onSubmit',
     value: function onSubmit(event) {
-      event.preventDefault();
+      // event.preventDefault();
 
       var projectActions = this.context.projectActions;
       var _state = this.state,

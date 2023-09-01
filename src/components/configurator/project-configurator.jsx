@@ -24,7 +24,7 @@ export default class ProjectConfigurator extends Component {
   }
 
   onSubmit(event) {
-    event.preventDefault();
+    // event.preventDefault();
 
     let {projectActions} = this.context;
 

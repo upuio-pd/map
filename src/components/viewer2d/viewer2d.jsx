@@ -106,7 +106,7 @@ function extractElementData(node) {
 }
 
 export default function Viewer2D(
-    {state, width, height, viewOnly, onClickOnItem , theme},
+    {state, width, height, viewOnly, onClickOnItem},
     {
         viewer2DActions,
         linesActions,
@@ -127,6 +127,7 @@ export default function Viewer2D(
     };
 
     let onMouseMove = (viewerEvent) => {
+        // console.log('mouse move')
         //workaround that allow imageful component to work
         let evt = new Event("mousemove-planner-event");
         evt.viewerEvent = viewerEvent;
@@ -338,6 +339,8 @@ export default function Viewer2D(
 
     let onChangeValue = (value) => {
         projectActions.updateZoomScale(value.a);
+        
+        
         return viewer2DActions.updateCameraView(value);
     };
 
@@ -403,7 +406,10 @@ export default function Viewer2D(
 
 
             <ReactSVGPanZoom
+                passiveValues={false}
+               
                 width={width}
+                
                 height={height}
                 value={viewer2D.isEmpty() ? null : viewer2D.toJS()}
                 onChangeValue={(value) => {

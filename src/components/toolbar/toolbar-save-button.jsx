@@ -7,7 +7,7 @@ import { Project } from "../../class/export";
 
 export default function ToolbarSaveButton({ state }, { translator }) {
   let saveProjectToFile = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     state = Project.unselectAll(state).updatedState;
     browserDownload(state.get("scene").toJS());
   };

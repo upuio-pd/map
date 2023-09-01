@@ -11,7 +11,7 @@ export default function ToolbarLoadButton(_ref, _ref2) {
 
 
   var loadProjectFromFile = function loadProjectFromFile(event) {
-    event.preventDefault();
+    // event.preventDefault();
     browserUpload().then(function (data) {
       projectActions.loadProject(JSON.parse(data));
     });

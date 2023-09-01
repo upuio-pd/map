@@ -10,7 +10,7 @@ export default function ToolbarSaveButton(_ref, _ref2) {
   var translator = _ref2.translator;
 
   var saveProjectToFile = function saveProjectToFile(e) {
-    e.preventDefault();
+    // e.preventDefault();
     state = Project.unselectAll(state).updatedState;
     browserDownload(state.get("scene").toJS());
   };

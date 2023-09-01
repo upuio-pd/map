@@ -28,3 +28,6 @@
 .react-tabs__tab-panel--selected {
   display: block;
 }
+.sortable-handler {
+  touch-action: none;
+}

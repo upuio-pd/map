@@ -7,7 +7,7 @@ import {browserUpload}  from '../../utils/browser';
 export default function ToolbarLoadButton({state}, {translator, projectActions}) {
 
   let loadProjectFromFile = event => {
-    event.preventDefault();
+    // event.preventDefault();
     browserUpload().then((data) => {
       projectActions.loadProject(JSON.parse(data));
     });

@@ -42,13 +42,13 @@ export default function ToolbarScreenshotButton({mode}, {translator}) {
 
 
   let saveScreenshotToFile = event => {
-    event.preventDefault();
+    // event.preventDefault();
     let canvas = document.getElementsByTagName('canvas')[0];
     imageBrowserDownload(canvas.toDataURL());
   };
 
   let saveSVGScreenshotToFile = event => {
-    event.preventDefault();
+    // event.preventDefault();
 
     // First of all I need the svg content of the viewer
     let svgElements = document.getElementsByTagName('svg');
