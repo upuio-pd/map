@@ -7,7 +7,7 @@ const STYLE = {
 };
 
 export default function ContentContainer({children, width, height, style = {}}) {
-  return <div style={{width, height, ...STYLE, ...style}} onWheel={event => event.stopPropagation()}>{children}</div>
+  return <div style={{width, height, ...STYLE, ...style}} onWheel={event => {event.stopPropagation() , { capture: false, passive: false }}}>{children}</div>
 }
 
 ContentContainer.propsType = {

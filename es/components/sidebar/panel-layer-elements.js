@@ -165,7 +165,7 @@ var PanelLayerElement = function (_Component) {
         React.createElement(
           'div',
           { style: contentArea, onWheel: function onWheel(e) {
-              return e.stopPropagation();
+              e.stopPropagation(), { capture: false, passive: false };
             } },
           React.createElement(
             'table',

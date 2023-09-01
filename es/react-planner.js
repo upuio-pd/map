@@ -127,7 +127,10 @@ var ReactPlanner = function (_Component) {
           theme: theme
         }, props, {
           onWheel: function onWheel(event) {
-            return console.log('wheel', event);
+            console.log('wheel', event), {
+              capture: false,
+              passive: false
+            };
           }
         }))
       );

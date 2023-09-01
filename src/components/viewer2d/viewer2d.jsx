@@ -123,11 +123,12 @@ export default function Viewer2D(
     let layerID = scene.selectedLayer;
 
     let mapCursorPosition = ({x, y}) => {
+       
         return {x, y: -y + scene.height};
     };
 
     let onMouseMove = (viewerEvent) => {
-        // console.log('mouse move')
+        
         //workaround that allow imageful component to work
         let evt = new Event("mousemove-planner-event");
         evt.viewerEvent = viewerEvent;
@@ -388,6 +389,49 @@ export default function Viewer2D(
     let rulerXElements = Math.ceil(sceneWidth / rulerUnitPixelSize) + 1;
     let rulerYElements = Math.ceil(sceneHeight / rulerUnitPixelSize) + 1;
 
+
+
+    const EVENTS_TO_MODIFY = ['touchstart', 'touchmove', 'touchend', 'touchcancel', 'wheel'];
+
+const originalAddEventListener = document.addEventListener.bind();
+document.addEventListener = (type, listener, options, wantsUntrusted) => {
+  let modOptions = options;
+  if (EVENTS_TO_MODIFY.includes(type)) {
+    if (typeof options === 'boolean') {
+      modOptions = {
+        capture: options,
+        passive: false,
+      };
+    } else if (typeof options === 'object') {
+      modOptions = {
+        ...options,
+        passive: false,
+      };
+    }
+  }
+
+  return originalAddEventListener(type, listener, modOptions, wantsUntrusted);
+};
+
+const originalRemoveEventListener = document.removeEventListener.bind();
+document.removeEventListener = (type, listener, options) => {
+  let modOptions = options;
+  if (EVENTS_TO_MODIFY.includes(type)) {
+    if (typeof options === 'boolean') {
+      modOptions = {
+        capture: options,
+        passive: false,
+      };
+    } else if (typeof options === 'object') {
+      modOptions = {
+        ...options,
+        passive: false,
+      };
+    }
+  }
+  return originalRemoveEventListener(type, listener, modOptions);
+};
+
    
 
     return (
@@ -407,9 +451,10 @@ export default function Viewer2D(
 
             <ReactSVGPanZoom
                 passiveValues={false}
-               
+                 onClick={event => (event.x, event.y, event.originalEvent)}
+  
                 width={width}
-                
+
                 height={height}
                 value={viewer2D.isEmpty() ? null : viewer2D.toJS()}
                 onChangeValue={(value) => {
@@ -426,6 +471,9 @@ export default function Viewer2D(
                 onMouseUp={onMouseUp}
                 miniaturePosition="none"
                 toolbarPosition="none"
+                scaleFactorOnWheel={1.1}
+               
+                
             >
                 <svg width={scene.width} height={scene.height}>
                     <defs>

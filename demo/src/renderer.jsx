@@ -60,7 +60,7 @@ let store = createStore(
           jump: true, // jump back and forth (time travelling)
           skip: true, // skip (cancel) actions
           reorder: true, // drag and drop actions in the history list
-          dispatch: true, // dispatch custom actions or action creators
+          dispatch: false, // dispatch custom actions or action creators
           test: true, // generate tests for the selected actions
         },
         actionsBlacklist: blackList,
@@ -72,7 +72,7 @@ let store = createStore(
 let plugins = [
   PlannerPlugins.Keyboard(),
   PlannerPlugins.Autosave("react-planner_v0"),
-  PlannerPlugins.ConsoleDebugger(),
+  // PlannerPlugins.ConsoleDebugger(),
 ];
 
 let toolbarButtons = [ToolbarScreenshotButton];

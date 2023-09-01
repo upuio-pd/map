@@ -144,7 +144,7 @@ export default class PanelLayerElement extends Component {
 
     return (
       <Panel name={this.context.translator.t('Elements on layer {0}', layer.name)}>
-        <div style={contentArea} onWheel={e => e.stopPropagation()  }>
+        <div style={contentArea} onWheel={e => {e.stopPropagation()  , {capture: false, passive: false  } }}>
 
           <table style={tableSearchStyle}>
             <tbody>

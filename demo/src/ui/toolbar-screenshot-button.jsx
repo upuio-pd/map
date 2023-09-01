@@ -48,6 +48,8 @@ export default function ToolbarScreenshotButton({mode}, {translator}) {
   };
 
   let saveSVGScreenshotToFile = event => {
+
+   
     // event.preventDefault();
 
     // First of all I need the svg content of the viewer

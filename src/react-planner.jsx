@@ -98,9 +98,13 @@ localStorage && localStorage.setItem('theme', `${props.theme == 'light' ? 'light
           onClickOnItem={onClickOnItem}
           theme={theme}
           {...props}
-          onWheel={(event) => 
-            console.log('wheel', event)
+          onWheel={(event) => {
+            console.log('wheel', event) , {
+              capture: false,
+              passive: false
             }
+            
+           } }
         />
 
         {/* <Sidebar

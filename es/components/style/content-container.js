@@ -18,7 +18,7 @@ export default function ContentContainer(_ref) {
   return React.createElement(
     'div',
     { style: _extends({ width: width, height: height }, STYLE, style), onWheel: function onWheel(event) {
-        return event.stopPropagation();
+        event.stopPropagation(), { capture: false, passive: false };
       } },
     children
   );

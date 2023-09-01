@@ -1,3 +1,7 @@
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
@@ -118,11 +122,12 @@ export default function Viewer2D(_ref, _ref2) {
         var x = _ref3.x,
             y = _ref3.y;
 
+
         return { x: x, y: -y + scene.height };
     };
 
     var onMouseMove = function onMouseMove(viewerEvent) {
-        // console.log('mouse move')
+
         //workaround that allow imageful component to work
         var evt = new Event("mousemove-planner-event");
         evt.viewerEvent = viewerEvent;
@@ -353,6 +358,45 @@ export default function Viewer2D(_ref, _ref2) {
     var rulerXElements = Math.ceil(sceneWidth / rulerUnitPixelSize) + 1;
     var rulerYElements = Math.ceil(sceneHeight / rulerUnitPixelSize) + 1;
 
+    var EVENTS_TO_MODIFY = ['touchstart', 'touchmove', 'touchend', 'touchcancel', 'wheel'];
+
+    var originalAddEventListener = document.addEventListener.bind();
+    document.addEventListener = function (type, listener, options, wantsUntrusted) {
+        var modOptions = options;
+        if (EVENTS_TO_MODIFY.includes(type)) {
+            if (typeof options === 'boolean') {
+                modOptions = {
+                    capture: options,
+                    passive: false
+                };
+            } else if ((typeof options === "undefined" ? "undefined" : _typeof(options)) === 'object') {
+                modOptions = _extends({}, options, {
+                    passive: false
+                });
+            }
+        }
+
+        return originalAddEventListener(type, listener, modOptions, wantsUntrusted);
+    };
+
+    var originalRemoveEventListener = document.removeEventListener.bind();
+    document.removeEventListener = function (type, listener, options) {
+        var modOptions = options;
+        if (EVENTS_TO_MODIFY.includes(type)) {
+            if (typeof options === 'boolean') {
+                modOptions = {
+                    capture: options,
+                    passive: false
+                };
+            } else if ((typeof options === "undefined" ? "undefined" : _typeof(options)) === 'object') {
+                modOptions = _extends({}, options, {
+                    passive: false
+                });
+            }
+        }
+        return originalRemoveEventListener(type, listener, modOptions);
+    };
+
     return React.createElement(
         "div",
         {
@@ -371,6 +415,9 @@ export default function Viewer2D(_ref, _ref2) {
             ReactSVGPanZoom,
             {
                 passiveValues: false,
+                onClick: function onClick(event) {
+                    return event.x, event.y, event.originalEvent;
+                },
 
                 width: width,
 
@@ -389,7 +436,9 @@ export default function Viewer2D(_ref, _ref2) {
                 // customToolbar={customToolBar}
                 , onMouseUp: onMouseUp,
                 miniaturePosition: "none",
-                toolbarPosition: "none"
+                toolbarPosition: "none",
+                scaleFactorOnWheel: 1.1
+
             },
             React.createElement(
                 "svg",
