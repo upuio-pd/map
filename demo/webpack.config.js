@@ -2,6 +2,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
 
+//added
+const process = require("process");
+
 const PAGE_TITLE = "React Planner";
 const VENDORS_LIBRARIES = [
   "immutable",
@@ -31,10 +34,7 @@ module.exports = (env, self) => {
       path: path.join(__dirname, "dist"),
       filename: "[chunkhash].[name].js",
     },
-    performance: {
-      hints: isProduction ? "warning" : false,
-    },
-    devtool: isProduction ? "source-map" : "eval",
+    //devtool: isProduction ? 'source-map' : 'eval',
     devServer: {
       open: true,
       port: port,
@@ -42,6 +42,7 @@ module.exports = (env, self) => {
     },
     resolve: {
       extensions: [".js", ".jsx"],
+
       alias: {
         "react-planner": path.join(__dirname, "../src/index"),
         process: "process/browser",
@@ -91,10 +92,11 @@ module.exports = (env, self) => {
         inject: "body",
         production: isProduction,
       }),
-      new webpack.ProvidePlugin({
-        process: "process/browser",
+      new webpack.DefinePlugin({
+        "process.env.MY_ENV": JSON.stringify(process.env.MY_ENV),
       }),
     ],
+
     optimization: {
       minimize: isProduction,
       splitChunks: {
@@ -102,7 +104,6 @@ module.exports = (env, self) => {
           default: false,
           commons: {
             test: /[\\/]node_modules[\\/]/,
-            name: "vendor",
             chunks: "all",
             minSize: 10000,
             reuseExistingChunk: true,
