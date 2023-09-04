@@ -116,12 +116,12 @@ localStorage && localStorage.setItem('color_theme', `${props.theme == 'light' ? 
           {...props}
         /> */}
 
-        <FooterBar
+        {/* <FooterBar
           width={width}
           height={footerBarH}
           state={extractedState}
           {...props}
-        />
+        /> */}
       </div>
     );
   }
