@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component , useEffect } from "react";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -58,6 +58,9 @@ class ReactPlanner extends Component {
     }
   }
 
+
+
+
   render() {
     let {
       width,
@@ -69,6 +72,7 @@ class ReactPlanner extends Component {
       theme = 'light' , 
       ...props
     } = this.props;
+
 
 localStorage && localStorage.setItem('color_theme', `${props.theme == 'light' ? 'light' : 'dark'}`);
     // const theme = 'light';
@@ -83,12 +87,12 @@ localStorage && localStorage.setItem('color_theme', `${props.theme == 'light' ? 
 
     return (
       <div style={{ ...wrapperStyle, height  }}>
-        {/* <Toolbar
+        <Toolbar
           width={toolbarW}
           height={toolbarH}
           state={extractedState}
           {...props}
-        /> */}
+        />
 
         <Content
           width={contentW}
@@ -96,7 +100,7 @@ localStorage && localStorage.setItem('color_theme', `${props.theme == 'light' ? 
           state={extractedState}
           viewOnly={viewOnly}
           onClickOnItem={onClickOnItem}
-          theme={theme}
+          theme={theme} 
           {...props}
           onWheel={(event) => {
             console.log('wheel', event) , {
