@@ -83,11 +83,11 @@
     "transformation-matrix": "^2.15.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.22.10",
     "@babel/core": "^7.22.11",
     "@babel/preset-env": "^7.22.14",
     "@babel/preset-react": "^7.22.5",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
     "babel-loader": "^8.2.4",
     "babel-plugin-import-glob": "^2.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
