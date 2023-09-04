@@ -106,9 +106,7 @@ localStorage && localStorage.setItem('color_theme', `${props.theme == 'light' ? 
             console.log('wheel', event) , {
               capture: false,
               passive: false
-            }
-            
-           } }
+            }}}
         />
 
         {/* <Sidebar
@@ -118,12 +116,12 @@ localStorage && localStorage.setItem('color_theme', `${props.theme == 'light' ? 
           {...props}
         /> */}
 
-        {/* <FooterBar
+        <FooterBar
           width={width}
           height={footerBarH}
           state={extractedState}
           {...props}
-        /> */}
+        />
       </div>
     );
   }
