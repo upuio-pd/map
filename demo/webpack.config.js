@@ -38,9 +38,12 @@ module.exports = (env, self) => {
     devServer: {
       open: true,
       port: port,
-      contentBase: path.join(__dirname, "./dist"),
+      static: path.join(__dirname, "./dist"),
     },
     resolve: {
+      fallback: {
+        path: require.resolve("path-browserify"),
+      },
       extensions: [".js", ".jsx"],
 
       alias: {
@@ -59,7 +62,7 @@ module.exports = (env, self) => {
               options: {
                 compact: false,
                 plugins: ["transform-object-rest-spread"],
-                presets: ["env", "react"],
+                presets: ["@babel/preset-env", "@babel/preset-react"],
               },
             },
           ],

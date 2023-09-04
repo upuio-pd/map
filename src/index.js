@@ -13,21 +13,23 @@ import ReactPlannerClasses from "./class/export";
 import ElementsFactories from "./catalog/factories/export";
 import ReactPlannerUtils from "./utils/export";
 import { fitToViewer } from "./components/viewer2d/export";
+import { Scene } from "./components/viewer2d/export";
 
 export {
-    Catalog,
-    Translator,
-    Models,
-    reducer,
-    ReactPlanner,
-    Plugins,
-    ReactPlannerConstants,
-    ReactPlannerSharedStyle,
-    ReactPlannerComponents,
-    ReactPlannerActions,
-    ReactPlannerReducers,
-    ReactPlannerClasses,
-    ElementsFactories,
-    ReactPlannerUtils,
-    fitToViewer,
+  Catalog,
+  Translator,
+  Models,
+  reducer,
+  ReactPlanner,
+  Plugins,
+  ReactPlannerConstants,
+  ReactPlannerSharedStyle,
+  ReactPlannerComponents,
+  ReactPlannerActions,
+  ReactPlannerReducers,
+  ReactPlannerClasses,
+  ElementsFactories,
+  ReactPlannerUtils,
+  Scene,
+  fitToViewer,
 };
