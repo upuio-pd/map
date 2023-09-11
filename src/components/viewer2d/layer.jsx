@@ -21,7 +21,7 @@ export default function Layer({ layer, scene, catalog  }) {
       }
       {
         lines.valueSeq().map(line =>
-          <Line key={line.id} layer={layer} line={line} scene={scene} catalog={catalog} />)
+          <Line key={Math.floor(Math.random() * 100) + 1} layer={layer} line={line} scene={scene} catalog={catalog} />)
       }
 
       {/* //burdayimmm */}

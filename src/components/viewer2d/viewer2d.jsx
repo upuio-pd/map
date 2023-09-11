@@ -391,7 +391,7 @@ export default function Viewer2D(
 
 
 
-    const EVENTS_TO_MODIFY = ['touchstart', 'touchmove', 'touchend', 'touchcancel', 'wheel'];
+const EVENTS_TO_MODIFY = ['touchstart', 'touchmove', 'touchend', 'touchcancel', 'wheel'];
 
 const originalAddEventListener = document.addEventListener.bind();
 document.addEventListener = (type, listener, options, wantsUntrusted) => {
@@ -445,6 +445,7 @@ document.removeEventListener = (type, listener, options) => {
                 gridTemplateColumns: `${rulerSize}px ${width - rulerSize}px`,
                 gridTemplateRows: `${rulerSize}px ${height - rulerSize}px`,
                 position: "relative",
+                
             }}
         >
 
@@ -464,7 +465,7 @@ document.removeEventListener = (type, listener, options) => {
                 onChangeTool={onChangeTool}
                 detectAutoPan={mode2DetectAutopan(mode)}
                 onMouseDown={onMouseDown}
-                background={ localStorage.theme == 'dark' ? '#141414' : "#fff"}
+                // background={ localStorage.theme == 'dark' ? '#141414' : "#fff"}
                 miniatureBackground={"#fff"}
                 onMouseMove={onMouseMove}
                 // customToolbar={customToolBar}
@@ -472,6 +473,7 @@ document.removeEventListener = (type, listener, options) => {
                 miniaturePosition="none"
                 toolbarPosition="none"
                 scaleFactorOnWheel={1.1}
+                background={"red"}
                
                 
             >

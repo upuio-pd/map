@@ -33,7 +33,7 @@ function Layer(_ref) {
     });
   }), lines.valueSeq().map(function (line) {
     return /*#__PURE__*/_react["default"].createElement(_export.Line, {
-      key: line.id,
+      key: Math.floor(Math.random() * 100) + 1,
       layer: layer,
       line: line,
       scene: scene,
