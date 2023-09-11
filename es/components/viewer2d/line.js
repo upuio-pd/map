@@ -30,11 +30,10 @@ function Line(_ref) {
   }
   var length = _export.GeometryUtils.pointsDistance(x1, y1, x2, y2);
   var angle = _export.GeometryUtils.angleBetweenTwoPointsAndOrigin(x1, y1, x2, y2);
-  var renderedHoles = line.holes.map(function (holeID, key) {
-    var hole = layer.holes.get(key);
+  var renderedHoles = line.holes.map(function (holeID) {
+    var hole = layer.holes.get(holeID);
     var startAt = length * hole.offset;
     var renderedHole = catalog.getElement(hole.type).render2D(hole, layer, scene);
-    console.log('holeID: ', holeID);
     return /*#__PURE__*/_react["default"].createElement("g", {
       key: holeID,
       transform: "translate(".concat(startAt, ", 0)"),

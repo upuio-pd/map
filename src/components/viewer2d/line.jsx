@@ -21,13 +21,13 @@ export default function Line({line, layer, scene, catalog}) {
   let length = GeometryUtils.pointsDistance(x1, y1, x2, y2);
   let angle = GeometryUtils.angleBetweenTwoPointsAndOrigin(x1, y1, x2, y2);
 
-  let renderedHoles = line.holes.map((holeID , key) => {
+  let renderedHoles = line.holes.map((holeID) => {
    
-    let hole = layer.holes.get(key);
+    let hole = layer.holes.get(holeID);
     let startAt = length * hole.offset;
     let renderedHole = catalog.getElement(hole.type).render2D(hole, layer, scene);
 
-    console.log('holeID: ', holeID);
+    
 
     return (
       <g
