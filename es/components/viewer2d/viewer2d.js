@@ -371,7 +371,7 @@ function Viewer2D(_ref, _ref2) {
     height: height,
     value: viewer2D.isEmpty() ? null : viewer2D.toJS(),
     onChangeValue: function onChangeValue(value) {
-      value ? _onChangeValue(value) : null;
+      _onChangeValue(value);
     },
     tool: mode2Tool(mode),
     onChangeTool: onChangeTool,
@@ -389,8 +389,8 @@ function Viewer2D(_ref, _ref2) {
     scaleFactorOnWheel: 1.1,
     background: "red"
   }, /*#__PURE__*/_react["default"].createElement("svg", {
-    width: scene.width,
-    height: scene.height
+    width: scene === null || scene === void 0 ? void 0 : scene.width,
+    height: scene === null || scene === void 0 ? void 0 : scene.height
   }, /*#__PURE__*/_react["default"].createElement("defs", null, /*#__PURE__*/_react["default"].createElement("pattern", {
     id: "diagonalFill",
     patternUnits: "userSpaceOnUse",

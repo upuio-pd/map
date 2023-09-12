@@ -455,15 +455,11 @@ document.removeEventListener = (type, listener, options) => {
             <ReactSVGPanZoom
                 passiveValues={false}
                  onClick={event => (event.x, event.y, event.originalEvent)}
-  
                 width={width}
-
                 height={height}
                 value={viewer2D.isEmpty() ? null : viewer2D.toJS()}
                 onChangeValue={(value) => {
-                    value ? onChangeValue(value) : null;
-                
-                    
+                    onChangeValue(value);
                 }}
                 tool={mode2Tool(mode)}
                 onChangeTool={onChangeTool}
@@ -481,7 +477,7 @@ document.removeEventListener = (type, listener, options) => {
                
                 
             >
-                <svg width={scene.width} height={scene.height}>
+                <svg width={scene?.width} height={scene?.height}>
                     <defs>
                         <pattern
                             id="diagonalFill"
