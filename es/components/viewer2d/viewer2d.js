@@ -268,7 +268,7 @@ function Viewer2D(_ref, _ref2) {
     }
     event.stopPropagation();
   };
-  var _onChangeValue = function onChangeValue(value) {
+  var onChangeValue = function onChangeValue(value) {
     projectActions.updateZoomScale(value.a);
     return viewer2DActions.updateCameraView(value);
   };
@@ -285,6 +285,7 @@ function Viewer2D(_ref, _ref2) {
   // }, []);
 
   var onChangeTool = function onChangeTool(tool) {
+    console.log('tool', tool);
     switch (tool) {
       case _reactSvgPanZoom.TOOL_NONE:
         projectActions.selectToolEdit();
@@ -370,7 +371,7 @@ function Viewer2D(_ref, _ref2) {
     height: height,
     value: viewer2D.isEmpty() ? null : viewer2D.toJS(),
     onChangeValue: function onChangeValue(value) {
-      _onChangeValue(value);
+      value ? console.log('value var') : console.log('value yok');
     },
     tool: mode2Tool(mode),
     onChangeTool: onChangeTool,

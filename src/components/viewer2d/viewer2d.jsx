@@ -358,6 +358,7 @@ export default function Viewer2D(
     // }, []);
 
     let onChangeTool = (tool) => {
+        console.log('tool', tool)
         switch (tool) {
             case TOOL_NONE:
                 projectActions.selectToolEdit();
@@ -450,6 +451,7 @@ document.removeEventListener = (type, listener, options) => {
         >
 
 
+
             <ReactSVGPanZoom
                 passiveValues={false}
                  onClick={event => (event.x, event.y, event.originalEvent)}
@@ -459,7 +461,9 @@ document.removeEventListener = (type, listener, options) => {
                 height={height}
                 value={viewer2D.isEmpty() ? null : viewer2D.toJS()}
                 onChangeValue={(value) => {
-                    onChangeValue(value);
+                    value ? console.log('value var') : console.log('value yok') 
+                    
+                    
                 }}
                 tool={mode2Tool(mode)}
                 onChangeTool={onChangeTool}
