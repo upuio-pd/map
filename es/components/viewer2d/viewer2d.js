@@ -371,14 +371,7 @@ function Viewer2D(_ref, _ref2) {
     height: height,
     value: viewer2D.isEmpty() ? null : viewer2D.toJS(),
     onChangeValue: function onChangeValue(value) {
-      value ? (console.log('valuee'), _onChangeValue(value)) : console.log('no vlaue'), _onChangeValue({
-        a: 1,
-        b: 0,
-        c: 0,
-        d: 1,
-        e: 0,
-        f: 0
-      });
+      value ? _onChangeValue(value) : null;
     },
     tool: mode2Tool(mode),
     onChangeTool: onChangeTool,

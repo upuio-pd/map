@@ -461,7 +461,7 @@ document.removeEventListener = (type, listener, options) => {
                 height={height}
                 value={viewer2D.isEmpty() ? null : viewer2D.toJS()}
                 onChangeValue={(value) => {
-                    value ? (console.log('valuee') ,  onChangeValue(value)) : console.log('no vlaue') ,  onChangeValue({a: 1, b: 0, c: 0, d: 1, e: 0, f: 0});
+                    value ? onChangeValue(value) : null;
                     
                     
                 }}
