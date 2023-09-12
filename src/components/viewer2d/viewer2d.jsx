@@ -358,7 +358,7 @@ export default function Viewer2D(
     // }, []);
 
     let onChangeTool = (tool) => {
-        console.log('tool', tool)
+       
         switch (tool) {
             case TOOL_NONE:
                 projectActions.selectToolEdit();
