@@ -462,7 +462,7 @@ document.removeEventListener = (type, listener, options) => {
                 value={viewer2D.isEmpty() ? null : viewer2D.toJS()}
                 onChangeValue={(value) => {
                     value ? onChangeValue(value) : null;
-                    
+                
                     
                 }}
                 tool={mode2Tool(mode)}
