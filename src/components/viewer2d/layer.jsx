@@ -13,6 +13,8 @@ export default function Layer({ layer, scene, catalog  }) {
   let { unit, groups } = scene;
   let { lines, areas, vertices, holes, id: layerID, items, opacity } = layer;
 
+  // console.log('lines' , lines)
+
   return (
     <g opacity={opacity}>
       {
@@ -21,7 +23,8 @@ export default function Layer({ layer, scene, catalog  }) {
       }
       {
         lines.valueSeq().map(line =>
-          <Line key={Math.floor(Math.random() * 100) + 1} layer={layer} line={line} scene={scene} catalog={catalog} />)
+         
+          <Line key={line.id} layer={layer} line={line} scene={scene} catalog={catalog} />)
       }
 
       {/* //burdayimmm */}

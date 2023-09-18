@@ -92,6 +92,10 @@ const a = {
   },
 
   render2D: function (element, layer, scene) {
+
+
+    
+
     //   let id = element.properties.get("id") || "";
     let equipmentBrand = element.properties.get("equipmentBrand") || "";
     let equipmentModel = element.properties.get("equipmentModel") || "";
