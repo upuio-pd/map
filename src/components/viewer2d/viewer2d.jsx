@@ -261,9 +261,9 @@ export default function Viewer2D(
                 let elementData = extractElementData(event.target);
 
                 if (elementData && elementData.selected) return;
-                if (viewOnly) {
-                    projectActions.unselectAll();
-                }
+                // if (viewOnly) {
+                //     projectActions.unselectAll();
+                // }
 
                 switch (elementData ? elementData.prototype : "none") {
                     case "areas":
@@ -283,7 +283,11 @@ export default function Viewer2D(
 
                     case "items":
                         if (!viewOnly)
+                        {
                             itemsActions.selectItem(elementData.layer, elementData.id);
+                            onClickOnItem(elementData.id);
+                        }
+                           
                         else onClickOnItem(elementData.id);
                         break;
 

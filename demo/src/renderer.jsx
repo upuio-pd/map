@@ -87,7 +87,7 @@ ReactDOM.render(
           width={width}
           height={height}
           viewOnly={false}
-          onClickOnItem={(id) => console.log(id)}
+          onClickOnItem={(id) => console.log('hiiiiii',id)}
           plugins={plugins}
           toolbarButtons={toolbarButtons}
           stateExtractor={(state) => state.get("react-planner")}
