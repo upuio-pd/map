@@ -261,6 +261,7 @@ export default function Viewer2D(
                 let elementData = extractElementData(event.target);
 
                 if (elementData && elementData.selected) return;
+                // DIKKATTTTT
                 // if (viewOnly) {
                 //     projectActions.unselectAll();
                 // }
