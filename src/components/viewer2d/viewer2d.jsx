@@ -478,7 +478,7 @@ document.removeEventListener = (type, listener, options) => {
                 miniaturePosition="none"
                 toolbarPosition="none"
                 scaleFactorOnWheel={1.1}
-                background={"red"}
+                background={"blue"}
                
                 
             >
