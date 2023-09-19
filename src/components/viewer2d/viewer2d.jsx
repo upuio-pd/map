@@ -262,9 +262,9 @@ export default function Viewer2D(
 
                 if (elementData && elementData.selected) return;
                 // DIKKATTTTT
-                // if (viewOnly) {
-                //     projectActions.unselectAll();
-                // }
+                if (viewOnly) {
+                    projectActions.unselectAll();
+                }
 
                 switch (elementData ? elementData.prototype : "none") {
                     case "areas":
