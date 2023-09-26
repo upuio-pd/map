@@ -107,7 +107,7 @@ var ReactPlanner = /*#__PURE__*/function (_Component) {
         _this$props2$theme = _this$props2.theme,
         theme = _this$props2$theme === void 0 ? 'light' : _this$props2$theme,
         props = _objectWithoutProperties(_this$props2, _excluded);
-      localStorage && localStorage.setItem('color_theme', "".concat(props.theme == 'light' ? 'light' : 'dark'));
+      localStorage && localStorage.setItem('color_theme', "".concat(props.theme == 'dark' ? 'dark' : 'light'));
       // const theme = 'light';
 
       //let contentW = !viewOnly ? width - toolbarW : width;

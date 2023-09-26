@@ -74,7 +74,7 @@ class ReactPlanner extends Component {
     } = this.props;
 
 
-localStorage && localStorage.setItem('color_theme', `${props.theme == 'light' ? 'light' : 'dark'}`);
+localStorage && localStorage.setItem('color_theme', `${props.theme == 'dark' ? 'dark' : 'light'}`);
     // const theme = 'light';
 
     //let contentW = !viewOnly ? width - toolbarW : width;
