@@ -390,7 +390,7 @@ function Viewer2D(_ref, _ref2) {
     miniaturePosition: "none",
     toolbarPosition: "none",
     scaleFactorOnWheel: 1.1,
-    background: "blue"
+    background: localStorage.color_theme == 'dark' ? "#141414" : "#fff"
   }, /*#__PURE__*/_react["default"].createElement("svg", {
     width: scene === null || scene === void 0 ? void 0 : scene.width,
     height: scene === null || scene === void 0 ? void 0 : scene.height

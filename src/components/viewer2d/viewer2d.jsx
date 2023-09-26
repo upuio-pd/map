@@ -248,6 +248,9 @@ export default function Viewer2D(
     };
 
     let onMouseUp = (viewerEvent) => {
+
+
+       
         let event = viewerEvent.originalEvent;
 
         let evt = new Event("mouseup-planner-event");
@@ -478,7 +481,7 @@ document.removeEventListener = (type, listener, options) => {
                 miniaturePosition="none"
                 toolbarPosition="none"
                 scaleFactorOnWheel={1.1}
-                background={"blue"}
+                background={localStorage.color_theme == 'dark' ? "#141414" : "#fff"}
                
                 
             >
