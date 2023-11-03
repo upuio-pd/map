@@ -116,6 +116,9 @@ var ReactPlanner = /*#__PURE__*/function (_Component) {
       var contentH = height;
       var sidebarH = height;
       var extractedState = stateExtractor(state);
+
+      //siu
+
       return /*#__PURE__*/_react["default"].createElement("div", {
         style: _objectSpread(_objectSpread({}, wrapperStyle), {}, {
           height: height

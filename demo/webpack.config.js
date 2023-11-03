@@ -87,6 +87,7 @@ module.exports = (env, self) => {
         },
       ],
     },
+
     plugins: [
       new HtmlWebpackPlugin({
         title: PAGE_TITLE,
@@ -95,8 +96,11 @@ module.exports = (env, self) => {
         inject: "body",
         production: isProduction,
       }),
+      new webpack.ProvidePlugin({
+        process: "process/browser",
+      }),
       new webpack.DefinePlugin({
-        "process.env.MY_ENV": JSON.stringify(process.env.MY_ENV),
+        "process.env": JSON.stringify(process?.env),
       }),
     ],
 
