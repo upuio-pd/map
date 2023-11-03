@@ -34,6 +34,8 @@ module.exports = (env, self) => {
       path: path.join(__dirname, "dist"),
       filename: "[chunkhash].[name].js",
     },
+    target: "web",
+
     //devtool: isProduction ? 'source-map' : 'eval',
     devServer: {
       open: true,
