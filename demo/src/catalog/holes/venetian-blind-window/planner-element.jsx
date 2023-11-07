@@ -1,7 +1,7 @@
 import React from "react";
 import * as Three from "three";
 import { loadObjWithMaterial } from "../../utils/load-obj";
-import path from "path";
+import path from "path-browserify";
 
 let cached3DWindow = null;
 
