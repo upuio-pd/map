@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require("path");
+const path = require("path-browserify");
 const webpack = require("webpack");
 
 //added
