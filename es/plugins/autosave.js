@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = autosave;
 var _projectActions = require("../actions/project-actions");
-var localStorage = window.hasOwnProperty('localStorage') ? window.localStorage : false;
+var localStorage = window.hasOwnProperty("localStorage") ? window.localStorage : false;
 var TIMEOUT_DELAY = 500;
 var timeout = null;
 function autosave(autosaveKey, delay) {
@@ -27,11 +27,11 @@ function autosave(autosaveKey, delay) {
       timeout = setTimeout(function () {
         var state = stateExtractor(store.getState());
         localStorage.setItem(autosaveKey, JSON.stringify(state.scene.toJS()));
-        /*let scene = state.sceneHistory.last;
+        var scene = state.sceneHistory.last;
         if (scene) {
-          let json = JSON.stringify(scene.toJS());
-          localStorage.setItem(autosaveKey, json);
-        }*/
+          var _json = JSON.stringify(scene.toJS());
+          localStorage.setItem(autosaveKey, _json);
+        }
       }, delay);
     });
   };
