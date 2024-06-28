@@ -67,7 +67,9 @@ const a = {
     };
 
     return (
-      <g transform={`translate(${-width / 2},${-depth / 2})`}>
+      <g 
+      
+      transform={`translate(${-width / 2},${-depth / 2})`}>
         <rect
           key="1"
           x="0"
