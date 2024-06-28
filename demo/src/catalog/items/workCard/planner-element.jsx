@@ -134,6 +134,7 @@ const a = {
         y={-300 / 2}
         width={300}
         height={300}
+        opacity={isSelected ? 1 : 0.5}
         transform={`translate(${-355 / 2},${400 / 2}) scale(${
           // SIZE CHANGES
           isSelected ? -2.0 : -1.65
