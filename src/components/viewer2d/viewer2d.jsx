@@ -290,6 +290,11 @@ export default function Viewer2D(
                         {
                             itemsActions.selectItem(elementData.layer, elementData.id);
                             onClickOnItem(elementData.id);
+                            
+                            ontouchstart = (event) => {
+                               onClickOnItem(elementData.id);
+                            };
+                           
                         }
                            
                         else onClickOnItem(elementData.id);
