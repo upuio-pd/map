@@ -233,7 +233,6 @@ function Viewer2D(_ref, _ref2) {
             if (!viewOnly) {
               itemsActions.selectItem(elementData.layer, elementData.id);
               onClickOnItem(elementData.id);
-             
             } else onClickOnItem(elementData.id);
             break;
           case "none":
