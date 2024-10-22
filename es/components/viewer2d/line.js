@@ -44,7 +44,6 @@ function Line(_ref) {
       "data-layer": layer.id
     }, renderedHole);
   });
-  
   var thickness = line.getIn(['properties', 'thickness', 'length']);
   var half_thickness = thickness / 2;
   var renderedLine = catalog.getElement(line.type).render2D(line, layer);
