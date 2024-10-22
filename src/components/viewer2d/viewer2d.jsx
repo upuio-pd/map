@@ -127,6 +127,17 @@ export default function Viewer2D(
         return {x, y: -y + scene.height};
     };
 
+
+    let onTouchStart = (viewerEvent) => {
+       touchdeneme(viewerEvent);
+       
+    };
+    
+    let onTouchEnd = (viewerEvent) => {
+        onMouseUp(viewerEvent); // Call the existing onMouseUp logic
+    };
+
+
     let onMouseMove = (viewerEvent) => {
         
         //workaround that allow imageful component to work
@@ -247,10 +258,29 @@ export default function Viewer2D(
         event.stopPropagation();
     };
 
-    let onMouseUp = (viewerEvent) => {
 
+
+    let touchdeneme = (viewerEvent) => {
+        let event = viewerEvent.originalEvent;
+
+        let evt = new Event("mouseup-planner-event");
+        evt.viewerEvent = viewerEvent;
+        document.dispatchEvent(evt);
+
+        let elementData = extractElementData(event.target);
+
+        if (elementData != null) {
+            elementData && onClickOnItem(elementData.id);
+            // console.log('wwww' , elementData.id);
+           
+        } 
 
        
+
+    };
+
+    let onMouseUp = (viewerEvent) => {
+
         let event = viewerEvent.originalEvent;
 
         let evt = new Event("mouseup-planner-event");
@@ -290,6 +320,13 @@ export default function Viewer2D(
                         {
                             itemsActions.selectItem(elementData.layer, elementData.id);
                             onClickOnItem(elementData.id);
+
+
+                            if(elementData != null )
+                            {
+                                touchdeneme(elementData.id);
+                            }
+                           
                             
                            
                            
@@ -472,6 +509,8 @@ document.removeEventListener = (type, listener, options) => {
                 onChangeValue={(value) => {
                     onChangeValue(value);
                 }}
+                onTouchStart={onTouchStart} // Added touch event
+    onTouchEnd={onTouchEnd} // Added touch event
                 tool={mode2Tool(mode)}
                 onChangeTool={onChangeTool}
                 detectAutoPan={mode2DetectAutopan(mode)}

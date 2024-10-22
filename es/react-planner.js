@@ -119,7 +119,11 @@ var ReactPlanner = /*#__PURE__*/function (_Component) {
         style: _objectSpread(_objectSpread({}, wrapperStyle), {}, {
           height: height
         })
-      }, /*#__PURE__*/_react["default"].createElement(_export2.Content, _extends({
+      }, /*#__PURE__*/_react["default"].createElement(Toolbar, _extends({
+        width: toolbarW,
+        height: toolbarH,
+        state: extractedState
+      }, props)), /*#__PURE__*/_react["default"].createElement(_export2.Content, _extends({
         width: contentW,
         height: contentH,
         state: extractedState,
