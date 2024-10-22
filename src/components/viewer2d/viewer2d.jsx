@@ -262,7 +262,6 @@ export default function Viewer2D(
 
     let touchdeneme = (viewerEvent) => {
         let event = viewerEvent.originalEvent;
-
         let evt = new Event("mouseup-planner-event");
         evt.viewerEvent = viewerEvent;
         document.dispatchEvent(evt);
@@ -271,12 +270,7 @@ export default function Viewer2D(
 
         if (elementData != null) {
             elementData && onClickOnItem(elementData.id);
-            // console.log('wwww' , elementData.id);
-           
         } 
-
-       
-
     };
 
     let onMouseUp = (viewerEvent) => {

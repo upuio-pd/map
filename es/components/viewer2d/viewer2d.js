@@ -217,7 +217,6 @@ function Viewer2D(_ref, _ref2) {
     var elementData = extractElementData(event.target);
     if (elementData != null) {
       elementData && onClickOnItem(elementData.id);
-      // console.log('wwww' , elementData.id);
     }
   };
   var onMouseUp = function onMouseUp(viewerEvent) {
