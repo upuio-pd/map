@@ -188,7 +188,7 @@ function Viewer2D(_ref, _ref2) {
       x = _mapCursorPosition2.x,
       y = _mapCursorPosition2.y;
     if (mode === constants.MODE_IDLE) {
-      var elementData = extractElementData(event?.target);
+      var elementData = extractElementData(event.target);
       if (!elementData || !elementData.selected) return;
       switch (elementData.prototype) {
         case "lines":
@@ -214,7 +214,7 @@ function Viewer2D(_ref, _ref2) {
     var evt = new Event("mouseup-planner-event");
     evt.viewerEvent = viewerEvent;
     document.dispatchEvent(evt);
-    var elementData = extractElementData(event?.target);
+    var elementData = extractElementData(event.target);
     if (elementData != null) {
       elementData && onClickOnItem(elementData.id);
     }
@@ -229,7 +229,7 @@ function Viewer2D(_ref, _ref2) {
       y = _mapCursorPosition3.y;
     switch (mode) {
       case constants.MODE_IDLE:
-        var elementData = extractElementData(event?.target);
+        var elementData = extractElementData(event.target);
         if (elementData && elementData.selected) return;
         // DIKKATTTTT
         if (viewOnly) {
